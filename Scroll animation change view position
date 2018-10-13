@@ -1,0 +1,101 @@
+import React,{Component} from 'react';
+import {
+	StyleSheet,
+	View,
+	Text,
+	Platform,
+	Dimensions,
+	FlatList,
+	Animated,
+	ScrollView,
+} from 'react-native';
+
+var {height, width} = Dimensions.get("window");
+var headerHeight = 200;
+
+class DemoScreen extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			scrollY: new Animated.Value(0),
+		}
+	}
+
+	componentDidMount() {
+	}
+
+	static navigationOptions = ({navigation}) => {
+		return {
+			headerTitle: <Text numberOfLines={1} style={{color: 'black', width: width-70, fontSize: 20, textAlign: Platform.OS==='android' ? 'left' : 'center'}}>Demo Screen</Text>,
+		};
+	}
+
+	render() {
+		var headMov = this.state.scrollY.interpolate({
+		      inputRange: [0, headerHeight, headerHeight],
+		      outputRange: [0, -headerHeight, -headerHeight]
+		});
+		return(
+			<View style={styles.container}>
+				<FlatList
+    			style={{flex: 1}}
+    			renderScrollComponent={this.renderScroll}
+
+    			style={{height:height, backgroundColor:"green"}}
+    			contentContainerStyle={{ paddingTop:headerHeight }}
+    			renderItem={({item})=><View><Text>{item}</Text></View>}
+    			keyExtractor={(item, index)=>index.toString()}
+    			data={[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]} />
+				
+				<Animated.View
+		          style={{
+		            position: "absolute",
+		            height: headerHeight,
+		            width: width,
+		            top: 0,
+		            backgroundColor: 'red',
+		            transform: [{ translateY: headMov }]
+		          }}>
+		          <Text>1</Text>
+		          <Text>2</Text>
+		          <Text>3</Text>
+		          <Text>4</Text>
+		          <Text>5</Text>
+	         	</Animated.View>
+				
+			</View>
+		)
+	}
+
+	renderScroll = (props) => {
+	    return (
+	      <Animated.ScrollView
+	        {...props}
+	        scrollEventThrottle={16}
+	        showsVerticalScrollIndicator={false}
+	        contentContainerStyle={{
+	          paddingTop: headerHeight,
+	        }}
+	        onScroll={Animated.event(
+	          [
+	            {
+	              nativeEvent: { contentOffset: { y: this.state.scrollY } }
+	            }
+	          ],
+	          //{ listener: this._handleScroll.bind(this) }, //Added listener
+	          {
+	            useNativeDriver: true
+	          }
+	        )} />
+	    );
+    }
+}
+
+const styles = StyleSheet.create({
+	container: {
+        flex: 1,
+        backgroundColor:'white',
+    },
+});
+
+export {DemoScreen};
