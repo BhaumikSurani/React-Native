@@ -80,7 +80,7 @@ adb shell input keyevent 82
 
 
 ## When Api call not working on Pia version  
-Copy “network_security_config.xml” file to “Project/Workspace/rtrLab/android/app/src/main/res/xml”  
+Copy “network_security_config.xml” file to “ProjectWorkspace/android/app/src/main/res/xml”  
 Open “AndroidManifest” file and write code  
 ```
 <manifest ... >  
