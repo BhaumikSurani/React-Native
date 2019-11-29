@@ -1,0 +1,28 @@
+generate Source map and find error location
+
+step 1:-
+
+ios:- (create "output" folder inside output)
+react-native bundle --platform ios --entry-file index.ios.js --dev false --bundle-output ./ios/output/index.ios.jsbundle --assets-dest ./ios/output --sourcemap-output ./ios/output/index.ios.js.map
+
+android:-
+react-native bundle --platform android --entry-file index.android.js --dev false --bundle-output ./android/app/build/outputs/index.android.jsbundle --assets-dest ./android/app/build/outputs/assets --sourcemap-output ./android/app/build/outputs/index.android.js.map
+
+
+step 2:-
+
+then create html file in that write following code for android src="./index.android.jsbundle"
+
+<html><body><script type="text/javascript" src="./index.ios.jsbundle"></script></body></html>
+
+save file on generated *.jsbundle file location
+
+
+step 3:-
+
+open that file in chrome
+then open "Inspect element"->source
+select the bundle file
+
+when you press on line it open the file 
+if you find error it some time yourLineNo + 1 click. it open you file
