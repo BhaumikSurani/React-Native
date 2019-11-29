@@ -1,0 +1,20 @@
+# App icon guide react native
+
+1) generate 1024 icon without transparent background for iOS
+2) generate 1024 icon with 190 corner radios
+3) generate 1024 icon with round corner
+4) open "https://romannurik.github.io/AndroidAssetStudio/index.html" 
+5) go to generic icon generator and click on image(left side)
+6) chose icon 1024 with 190 corner radios
+7) set following setting
+	- don't trim
+	- padding = 0
+	- Asset size = 48dp
+	- Asset padding = 0dp
+	- color = transparent
+	- set name which you want
+8) download that icon and do same process for round icon
+9) for iOS go to "https://appiconmaker.co/"
+10) drag and drop iOS icon and generate 
+
+Note:- for android notification you have to create white icon with transparent background (48x48)
