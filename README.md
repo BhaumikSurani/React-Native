@@ -41,60 +41,61 @@ This step will open your app in the IOS simulator. Run the following command in 
 react-native run-ios  
 react-native run-ios —-simulator “iPhone 5”  
 
-Note:-  
+**Note:-**  
 if running command fail and give “build path” error and "Analyze node_modules/react-native/ReactCommon/yoga/yoga/Yoga.c (2 commands with analyzer issues)" Error  
 so delete “./ios/build” Directory because path is changed and it try to find old path  
 then reRun the above command  
 
 
-React native another Commands:-  
+## React native another Commands:-  
 (For Save Reactnative another library in project)  
 npm install --save react-navigation  
 (For Link React native. to project if after above comment throw error)  
 react-native link  
 react-native link react-navigation  
   
-install package and automatically link (above Process)  
+## install package and automatically link (above Process)  
 react-native install react-native-package-name  
 
 
-solving Config.h issue  
+## solving Config.h issue  
 cd /node_modules/react-native/third-party/glog-0.3.4  
 ./configure  
 
 
 
-Get npm package all available list  
+## Get npm package all available list  
 npm view react-native-package-name versions  --json  
 
 
 
-Install all package after deleted as per “package.json” listed  
+## Install all package after deleted as per “package.json” listed  
 npm install  
 
 
 
-Android in real device open developer menu without shack using cmd  
+## Android in real device open developer menu without shack using cmd  
 adb shell input keyevent 82  
 
 
 
-When Api call not working on Pia version  
+## When Api call not working on Pia version  
 Copy “network_security_config.xml” file to “Project/Workspace/rtrLab/android/app/src/main/res/xml”  
 Open “AndroidManifest” file and write code  
+```
 <manifest ... >  
     <application android:networkSecurityConfig="@xml/network_security_config"  
                     ... >  
         ...  
     </application>  
 </manifest>  
+```
 
 
-
-Reduce Application size  
+## Reduce Application size  
 Open “android/app/build.gradle” file  
 Set def enableProguardInReleaseBuilds = true  
 Set “shrinkResources true” inside the (buildTypes {release {}})  
 Set def enableSeparateBuildPerCPUArchitecture = true  
-Note:- if you set “universalApk true” inside splits { abi {}}. It create global api file and upload it. appstore device into split automatically.  
+**Note:-** if you set “universalApk true” inside splits { abi {}}. It create global api file and upload it. appstore device into split automatically.  
 Reference:- https://medium.com/@aswinmohanme/how-i-reduced-the-size-of-my-react-native-app-by-86-27be72bba640  
