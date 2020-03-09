@@ -4,7 +4,6 @@ react native Project required library
 react-native-status-bar-height 
 react-native-device-info 
 react-native-localize
-react-native-safe-area 
 md5 
 js-base64 
 react-native-event-listeners
