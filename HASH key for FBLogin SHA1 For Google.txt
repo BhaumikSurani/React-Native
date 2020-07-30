@@ -1,0 +1,7 @@
+open terminal in mac type following command  
+
+keytool -exportcert -alias androiddebugkey -keystore debug.keystore | openssl sha1 -binary | openssl base64
+
+
+For Google Login sha1 key
+keytool -list -v -keystore /Users/Project_Path/android/app/debug.keystore -alias androiddebugkey -storepass android -keypass android
