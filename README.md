@@ -99,3 +99,14 @@ Set “shrinkResources true” inside the (buildTypes {release {}})
 Set def enableSeparateBuildPerCPUArchitecture = true  
 **Note:-** if you set “universalApk true” inside splits { abi {}}. It create global api file and upload it. appstore device into split automatically.  
 Reference:- https://medium.com/@aswinmohanme/how-i-reduced-the-size-of-my-react-native-app-by-86-27be72bba640  
+
+
+## For Android App Bundle (Small app download Playstrore)
+./gradlew assembleRelease     
+above command generate apk large size so you have to create .aab file when you want to download apk from play store  
+
+./gradlew bundleRelease    
+Now instead of an APK file being generated we will get a new file with an extension .aab located under android/app/build/outputs/bundle/release/app.aab— this is the file you want to submit to Google Play (either manually or using Google Play API)
+
+
+
