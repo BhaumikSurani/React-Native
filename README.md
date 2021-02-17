@@ -104,6 +104,8 @@ Reference:- https://medium.com/@aswinmohanme/how-i-reduced-the-size-of-my-react-
 ## For Android App Bundle (Small app download Playstrore)
 ```
 ./gradlew assembleRelease     
+  or
+./gradlew app:assembleRelease
 ```
 above command generate apk large size so you have to create .aab file when you want to download apk from play store  
 ```
