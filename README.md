@@ -114,4 +114,10 @@ above command generate apk large size so you have to create .aab file when you w
 Now instead of an APK file being generated we will get a new file with an extension .aab located under android/app/build/outputs/bundle/release/app.aab— this is the file you want to submit to Google Play (either manually or using Google Play API)
 
 
+## Change .gradle location for android
+create **.bash_profile** file in **/Users/USER_NAME/** location and add following line   
+```
+export GRADLE_USER_HOME=/Volumes/MACMINI_DATA_SSD/Android/.gradle
+```
+
 
