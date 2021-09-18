@@ -47,6 +47,25 @@ so delete “./ios/build” Directory because path is changed and it try to find
 then reRun the above command  
 
 
+## react-native 0.64.2 with Apple M1 and Xcode 12.5
+Ref:- https://github.com/aiba/react-native-m1/blob/main/README.md  
+Open iOS Project then MyApp -> Build Settings -> Architectures -> Excluded Architectures: set to arm64 
+then Write following line in podFile
+```
+use_flipper!()
+post_install do |installer|
+  react_native_post_install(installer)
+      installer.pods_project.build_configurations.each do |config| config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] =  "arm64"
+      end
+end
+```
+Then after delete **Podfile.lock** file  
+Then run following command in terminal
+```
+pod deintegrate
+pod install
+```
+
 ## React native another Commands:-  
 (For Save Reactnative another library in project)  
 npm install --save react-navigation  
@@ -56,12 +75,6 @@ react-native link react-navigation
   
 ## install package and automatically link (above Process)  
 react-native install react-native-package-name  
-
-
-## solving Config.h issue  
-cd /node_modules/react-native/third-party/glog-0.3.4  
-./configure  
-
 
 
 ## Get npm package all available list  
