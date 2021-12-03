@@ -1,28 +1,28 @@
-generate Source map and find error location
+For Find Javascript error stacktrace use "metro-symbolicate" 
+It is default lib for react native for stacktrace
 
-step 1:-
+when you make release build at that time generate sourcemap at following location
+android/app/build/generated/sourcemaps/react/release/index.android.bundle.map
 
-ios:- (create "output" folder inside output)
-react-native bundle --platform ios --entry-file index.ios.js --dev false --bundle-output ./ios/output/index.ios.jsbundle --assets-dest ./ios/output --sourcemap-output ./ios/output/index.ios.js.map
-
-android:-
-react-native bundle --platform android --entry-file index.android.js --dev false --bundle-output ./android/app/build/outputs/index.android.jsbundle --assets-dest ./android/app/build/outputs/assets --sourcemap-output ./android/app/build/outputs/index.android.js.map
+then copy that file with you application bcz when you want to find the bug this file is help full
 
 
-step 2:-
+When you want to stacktrace make new textfile with crash analitycs stacktrace
+Ex:- 
+```
+Fatal Exception: com.facebook.react.common.JavascriptException: TypeError: undefined is not an object (evaluating '(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).status.crash'), stack:
+testFunc@524:2856
+<unknown>@524:2748
+y@112:661
+callTimers@112:2718
+value@25:3685
+<unknown>@25:841
+value@25:2939
+value@25:813
+value@-1
+```
 
-then create html file in that write following code for android src="./index.android.jsbundle"
-
-<html><body><script type="text/javascript" src="./index.ios.jsbundle"></script></body></html>
-
-save file on generated *.jsbundle file location
-
-
-step 3:-
-
-open that file in chrome
-then open "Inspect element"->source
-select the bundle file
-
-when you press on line it open the file 
-if you find error it some time yourLineNo + 1 click. it open you file
+then after run Following command
+```
+npx metro-symbolicate ./Your_SourcLocation/index.android.bundle.map < errorStacktrace.txt
+```
