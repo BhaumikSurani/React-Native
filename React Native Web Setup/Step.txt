@@ -1,0 +1,92 @@
+1) Create React native project
+npx react-native init app-name
+
+
+2) Create Web App for copy install package and confid detail
+npx create-react-app web-app
+
+
+3) Add Following package from web-app/package.json to app-name/package.json
+Ex:- 
+"@testing-library/jest-dom": "^5.16.5",
+"@testing-library/react": "^13.4.0",
+"@testing-library/user-event": "^13.5.0",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-scripts": "5.0.1",
+"web-vitals": "^2.1.4"
+
+4) run "npm install" or "yarn" command in "app-name" dir.
+
+5) add "web" and "build" command in script object. (package.json)
+"scripts": {
+    "web": "react-scripts start",
+    "build": "react-scripts build",
+},
+
+6) install "react-native-web" package.
+
+7) Copy "Public" dir from "web-app" to "app-name"
+
+8) Open ".eslintrc.js" file in "app-name" and set following content
+module.exports = {
+  root: true,
+  extends: ["@react-native-community"],
+  rules: {
+    'prettier/prettier': 0,
+  },
+};
+
+9) Create ".prettierrc.js" file in "app-name" and set follwoing content
+module.exports = {
+  bracketSpacing: false,
+  jsxBracketSameLine: true,
+  singleQuote: true,
+  trailingComma: 'all',
+  arrowParens: 'avoid',
+  endOfLine: 'auto',
+};
+
+11) Copy "src" dir from "web-app" to "app-name"
+
+12) delete "app-name/App.js" file
+
+13) open "app-name/index.js" file and change "./App.js" to "./src/App.js".
+Remove Wanted code use only Safearea, View, Image code.
+
+14) open "app-name/src/index.css" and set following code
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* These styles make the body full-height */
+html,
+body {
+  height: 100%;
+}
+/* These styles disable body scrolling if you are using <ScrollView> */
+body {
+  overflow: hidden;
+}
+/* These styles make the root element full-height */
+#root {
+  display: flex;
+  height: 100%;
+}
+
+
+15) Delete Unnecessary files from src dir.
+
+16) Now run "npm run web" or "yarn web" command
+
